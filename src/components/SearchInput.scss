@@ -1,0 +1,15 @@
+.search-input {
+  display: flex;
+  margin: .4rem 1.4rem;
+  align-items: baseline;
+
+  .search-input__label {
+    margin-bottom: 0;
+    padding: 0 .5rem;
+  }
+
+  input {
+    border: groove;
+    border-radius: 5px;
+  }
+}
