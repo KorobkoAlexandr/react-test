@@ -1,16 +1,15 @@
 import React from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { useSelector } from "react-redux";
-import { AppStateType, Vehicle } from "../types";
 import './Details.scss'
 import Button from "react-bootstrap/cjs/Button";
 
-const Details = (props: any) => {
-    const { id }: { id: string } = useParams();
-    const vehicle: Vehicle | undefined = useSelector((state: AppStateType) => state.vehicles.entities.find(v => v.id === id));
+const Details = (props) => {
+    const { id } = useParams();
+    const vehicle = useSelector((state) => state.vehicles.entities.find(v => v.id === id));
     const history = useHistory();
 
-    const parseDate = (date: string) => {
+    const parseDate = (date) => {
         return !!date ? new Date("2014-12-10T15:36:25.724000Z").toLocaleString() : '';
     };
 
@@ -50,9 +49,6 @@ const Details = (props: any) => {
                 <li className="details-list__item">
                     <b>Vehicle Class:</b> {vehicle?.vehicle_class}
                 </li>
-                {/*<li className="details-list__item">*/}
-                {/*    <b>Films:</b> {vehicle?.films}*/}
-                {/*</li>*/}
             </ul>
         </div>
     ): null;

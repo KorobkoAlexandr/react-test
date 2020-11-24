@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
+import * as PropTypes from 'prop-types';
 import ListGroup from "react-bootstrap/cjs/ListGroup";
 import ListItem from "./ListItem";
-import { Vehicle } from "../types";
 import { useSelector } from "react-redux";
 import { getVehiclesCurrentPage } from "../selectors/vehiclesSelectors";
 import Paginator from "./Paginator";
 
-const ListItems = (props: { data: any }) => {
-    const [visibleData, setVisibleData]: [any, any] = useState([]);
+const ListItems = (props) => {
+    const [visibleData, setVisibleData] = useState([]);
     const currentPage = useSelector(getVehiclesCurrentPage);
 
     const setVisibleDataEffectCb = () => {
         const start = (currentPage - 1) * 5;
         const end = currentPage * 5;
-        const dataSlice: any = props.data.slice(start, end);
+        const dataSlice = props.data.slice(start, end);
         setVisibleData(dataSlice);
     };
 
@@ -23,7 +23,7 @@ const ListItems = (props: { data: any }) => {
         <>
             <ListGroup>
                 {
-                    visibleData.map((item: any) => (
+                    visibleData.map((item) => (
                         <ListItem id={item.id} title={item.name} key={item.id}/>
                     ))
                 }
@@ -32,5 +32,9 @@ const ListItems = (props: { data: any }) => {
         </>
     )
 };
+
+ListItems.propTypes = {
+    data: PropTypes.array.isRequired
+}
 
 export default ListItems;

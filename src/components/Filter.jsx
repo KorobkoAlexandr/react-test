@@ -1,9 +1,10 @@
 import React from "react";
+import * as PropTypes from 'prop-types';
 import './Filter.scss';
 import { useSelector } from "react-redux";
 import { getVeiclesClasses } from "../selectors/vehiclesSelectors";
 
-const Filter = (props: {onSelect: any}) => {
+const Filter = (props) => {
     const vehiclesClasses = useSelector(getVeiclesClasses)
 
     return (
@@ -15,7 +16,7 @@ const Filter = (props: {onSelect: any}) => {
                 id="filter">
                 <option>None</option>
                 {
-                    vehiclesClasses.map((value: string, ind: number) => (<option value={value} key={ind}>{value.toUpperCase()}</option>))
+                    vehiclesClasses.map((value, ind) => (<option value={value} key={ind}>{value.toUpperCase()}</option>))
                 }
             </select>
             <label htmlFor="filter" className="filter-label">
@@ -24,5 +25,9 @@ const Filter = (props: {onSelect: any}) => {
         </div>
     )
 }
+
+Filter.propTypes = {
+    onSelect: PropTypes.func.isRequired
+};
 
 export default Filter;

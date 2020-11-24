@@ -6,9 +6,9 @@ import VehiclesList from "../components/VehiclesList";
 import Details from "./Details";
 import StarshipsList from "../components/StarshipsList";
 
-const Home = (props: any) => {
+const Home = (props) => {
     const { pathname } = useLocation();
-    const { id }: { id: string } = useParams();
+    const { id } = useParams();
     return (
         (
             <Route path="/">

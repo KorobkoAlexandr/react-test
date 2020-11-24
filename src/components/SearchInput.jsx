@@ -1,10 +1,10 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import './SearchInput.scss'
 
-const SearchInput = (props: {onSearch: any}) => {
+const SearchInput = (props) => {
     const [search, setValue] = useState('');
 
-    const inputChanged = (e: ChangeEvent<HTMLInputElement>) => {
+    const inputChanged = (e) => {
         const value = e.target.value;
         setValue(value);
         props.onSearch(value);

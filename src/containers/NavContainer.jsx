@@ -3,7 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import { LinkContainer } from "react-router-bootstrap";
 import Nav from "react-bootstrap/Nav";
 
-const NavContainer = (props: any) => (
+const NavContainer = (props) => (
     <Navbar bg="light">
         <Navbar.Brand>Sky Tour</Navbar.Brand>
         <Nav className="mr-auto" activeKey="home">

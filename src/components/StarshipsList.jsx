@@ -4,7 +4,7 @@ import { startships, startshipsLoading } from "../selectors/starshipsSelectors";
 import ListItems from "./ListItems";
 import { getAllStarships } from "../reducers/starshipsSlice";
 
-const StarshipsList = (props: any) => {
+const StarshipsList = (props) => {
     const dispatch = useDispatch();
     const allStarships = useSelector(startships);
     const loading = useSelector(startshipsLoading);
@@ -18,7 +18,7 @@ const StarshipsList = (props: any) => {
             if(entities.length) return;
         }
 
-        let promise: any;
+        let promise;
         if (loading === 'idle') {
             promise = dispatch(getAllStarships());
         }

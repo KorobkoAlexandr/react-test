@@ -6,7 +6,7 @@ import appStore from "./store";
 import Home from "./containers/Home";
 import NavContainer from "./containers/NavContainer";
 
-const App = (props: any) => (
+const App = (props) => (
     <Provider store={appStore.store}>
         <PersistGate loading={null} persistor={appStore.persistor}>
             <Router>

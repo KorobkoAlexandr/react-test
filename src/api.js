@@ -1,21 +1,20 @@
-import { Starship, Vehicle } from "./types";
 import { v4 as uuid } from "uuid";
 
 const vehiclesURI = 'https://swapi.py4e.com/api/vehicles';
 const starshipsURI = 'https://swapi.py4e.com/api/starships';
 
-export const fetchVehicles = (uri: string = vehiclesURI) => {
+export const fetchVehicles = (uri = vehiclesURI) => {
     return fetch(uri);
 };
 
-export const fetchStarships = (uri: string = starshipsURI) => {
+export const fetchStarships = (uri = starshipsURI) => {
     return fetch(uri);
 };
 
-export const apiHelper = <T extends {id?: string}>(requestFn: any) => async (): Promise<T[]> => {
-    let next: string | undefined;
+export const apiHelper = (requestFn) => async () => {
+    let next;
     let first = true;
-    const results: T[] = [];
+    const results = [];
     while (!!next || first) {
         const data = await requestFn(next);
         const jsonData = await data.json();
@@ -23,7 +22,7 @@ export const apiHelper = <T extends {id?: string}>(requestFn: any) => async (): 
         first = false;
         results.push(...jsonData.results);
     }
-    results.forEach((entity: T) => {
+    results.forEach((entity) => {
         entity.id = uuid()
     });
 

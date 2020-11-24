@@ -1,10 +1,11 @@
 import React from 'react';
+import * as PropTypes from 'prop-types';
 import { useRouteMatch } from 'react-router-dom';
 import { LinkContainer } from "react-router-bootstrap";
 import ListGroup from "react-bootstrap/ListGroup";
 
-const ListItem = (props: {id?: string, title: string}) => {
-    const {url} : {url: string} = useRouteMatch();
+const ListItem = (props) => {
+    const {url} = useRouteMatch();
 
     return (
         <ListGroup.Item action>
@@ -13,6 +14,11 @@ const ListItem = (props: {id?: string, title: string}) => {
             </LinkContainer>
         </ListGroup.Item>
     )
+};
+
+ListItem.propTypes = {
+    id: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
 };
 
 export default ListItem;

@@ -2,17 +2,17 @@ import React from 'react';
 import Pagination from "react-bootstrap/Pagination";
 import { changePage } from "../reducers/vehiclesSlice";
 import { useDispatch } from "react-redux";
+import * as PropTypes from "prop-types";
 
-const Paginator = (props: { currentPage: number, dataLength: number }) => {
+const Paginator = (props) => {
 
     const dispatch = useDispatch();
 
-    const goToPage = (page: number) => {
-        console.log('page', page);
+    const goToPage = (page) => {
         dispatch(changePage(page))
     };
 
-    const createPagination = (perPage: number) => {
+    const createPagination = (perPage) => {
         const itemsCount = props.dataLength;
         const paginationCount = !!(itemsCount % perPage) ? itemsCount / perPage + 1 : itemsCount / perPage;
 
@@ -36,5 +36,10 @@ const Paginator = (props: { currentPage: number, dataLength: number }) => {
         </Pagination>
     )
 };
+
+Paginator.propTypes = {
+    dataLength: PropTypes.number.isRequired,
+    currentPage: PropTypes.number.isRequired
+}
 
 export default Paginator
